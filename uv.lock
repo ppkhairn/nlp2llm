@@ -711,6 +711,13 @@ mix = [
 tensorflow = [
     { name = "tensorflow" },
 ]
+torch = [
+    { name = "timm" },
+    { name = "torch" },
+    { name = "torchtext" },
+    { name = "torchvision" },
+    { name = "transformers", extra = ["sentencepiece"] },
+]
 
 [package.metadata]
 requires-dist = [
@@ -730,6 +737,13 @@ mix = [
     { name = "transformers", extras = ["sentencepiece"], specifier = ">=4.57.3,<5" },
 ]
 tensorflow = [{ name = "tensorflow", specifier = "==2.12.0" }]
+torch = [
+    { name = "timm", specifier = ">=1.0.24" },
+    { name = "torch", specifier = ">=2.1,<3" },
+    { name = "torchtext", specifier = ">=0.16,<1" },
+    { name = "torchvision", specifier = ">=0.16,<1" },
+    { name = "transformers", extras = ["sentencepiece"], specifier = ">=4.57,<5" },
+]
 
 [[package]]
 name = "numpy"
@@ -1454,6 +1468,22 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/46/79/cf31d7a93a8fdc6aa0fbb665be84426a8c5a557d9240b6239e9e11e35fc5/termcolor-3.3.0.tar.gz", hash = "sha256:348871ca648ec6a9a983a13ab626c0acce02f515b9e1983332b17af7979521c5", size = 14434, upload-time = "2025-12-29T12:55:21.882Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/33/d1/8bb87d21e9aeb323cc03034f5eaf2c8f69841e40e4853c2627edf8111ed3/termcolor-3.3.0-py3-none-any.whl", hash = "sha256:cf642efadaf0a8ebbbf4bc7a31cec2f9b5f21a9f726f4ccbb08192c9c26f43a5", size = 7734, upload-time = "2025-12-29T12:55:20.718Z" },
+]
+
+[[package]]
+name = "timm"
+version = "1.0.24"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub" },
+    { name = "pyyaml" },
+    { name = "safetensors" },
+    { name = "torch" },
+    { name = "torchvision" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/f4/9d/0ea45640be447445c8664ce2b10c74f763b0b0b9ed11620d41a4d4baa10c/timm-1.0.24.tar.gz", hash = "sha256:c7b909f43fe2ef8fe62c505e270cd4f1af230dfbc37f2ee93e3608492b9d9a40", size = 2412239, upload-time = "2026-01-07T00:26:17.541Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/92/dd/c1f5b0890f7b5db661bde0864b41cb0275be76851047e5f7e085fe0b455a/timm-1.0.24-py3-none-any.whl", hash = "sha256:8301ac783410c6ad72c73c49326af6d71a9e4d1558238552796e825c2464913f", size = 2560563, upload-time = "2026-01-07T00:26:13.956Z" },
 ]
 
 [[package]]
