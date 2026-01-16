@@ -1,23 +1,50 @@
-[tool.poetry]
+[project]
 name = "nlp2llm"
 version = "0.1.0"
 description = "Learning NLP and LLM"
-authors = ["ppkhairn <ppkhairn@mtu.edu>"]
-readme = "README.md"
+requires-python = ">=3.10,<3.12"
 
-[tool.poetry.dependencies]
-python = ">=3.10,<3.12"
-tensorflow = "2.12.0"
-torch = {version = "2.0.1", source = "pytorch-cpu"}
-torchvision = {version = "0.15.2", source = "pytorch-cpu"}
-torchtext = {version = "0.15.2", source = "pytorch-cpu"}
-absl-py = "^2.3.1"
+# Safe, shared dependencies
+dependencies = [
+    "absl-py>=2.3.1,<3",
+    "torch==2.3.1",
+    "torchtext==0.18.0",
+    "torchvision==0.18.1",
+]
 
-[[tool.poetry.source]]
-name = "pytorch-cpu"
-url = "https://download.pytorch.org/whl/cpu"
-priority = "supplemental"
+[dependency-groups]
+
+# PyTorch-only (recommended for Transformers / LLMs)
+torch = [
+    "torch>=2.1,<3",
+    "torchvision>=0.16,<1",
+    "torchtext>=0.16,<1",
+    "transformers[sentencepiece]>=4.57,<5",
+]
+
+# TensorFlow-only notebooks
+tensorflow = [
+    "tensorflow==2.12.0",
+]
+
+# MIXED backend (TensorFlow + PyTorch)
+# Use ONLY for notebooks that strictly require both
+mix = [
+    "tensorflow==2.12.0",
+    "torch>=2.1,<3",
+    "torchvision>=0.16,<1",
+    "torchtext>=0.16,<1",
+    "transformers[sentencepiece]>=4.57.3,<5",
+]
+
+# Dev / Jupyter
+dev = [
+    "ipykernel",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = false
